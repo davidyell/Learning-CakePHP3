@@ -7,8 +7,7 @@
     "require": {
         "php": ">=5.4.19",
         "cakephp/cakephp": "3.0.*-dev",
-        "mobiledetect/mobiledetectlib": "2.*",
-        "cakephp/debug_kit": "2.2.*@dev"
+        "mobiledetect/mobiledetectlib": "2.*"
     },
     "require-dev": {
         "d11wtq/boris": "1.0.*"
