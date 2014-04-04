@@ -21,6 +21,9 @@
  */
 namespace App\Controller;
 
+use Cake\Controller\Component\Auth\BlowfishPasswordHasher;
+use Cake\Event\Event;
+
 /**
  * Application Controller
  *
@@ -31,6 +34,31 @@ namespace App\Controller;
  */
 class AppController extends \Cake\Controller\Controller {
 	
-	public $components = ['Session'];
+/**
+ * Global components
+ * 
+ * @var array
+ */
+	public $components = [
+		'Session',
+		'Auth' => [
+			'authenticate' => [
+				'Form' => [
+					'fields' => ['username' => 'email']
+				]
+			],
+			'loginAction' => ['controller' => 'users', 'action' => 'login'],
+		]
+	];
+	
+/**
+ * Global beforeFilter
+ * 
+ * @param \Cake\Event\Event $event
+ * @return void
+ */
+	public function beforeFilter(Event $event) {
+		$this->Auth->allow(['index', 'view']);
+	}
 	
 }

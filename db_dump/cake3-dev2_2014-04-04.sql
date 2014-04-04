@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.17)
 # Database: cake3-dev2
-# Generation Time: 2014-04-04 15:41:36 +0000
+# Generation Time: 2014-04-04 16:01:37 +0000
 # ************************************************************
 
 
@@ -142,9 +142,9 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `created`, `modified`)
 VALUES
-	(1,'Neon','neon1024@gmail.com','neon1024','2014-04-04 11:41:03','2014-04-04 11:41:03'),
-	(2,'Geoff','geoff@example.com','geoff','2014-04-04 11:41:15','2014-04-04 11:41:15'),
-	(3,'Bruce','bruce@example.com','bruce','2014-04-04 11:41:27','2014-04-04 11:41:27');
+	(1,'Neon','neon1024@gmail.com','$2y$10$M4mLE6J58LCEpt.Wbkvf1.drpwiODa9EOtRrQmAj6qEcpcVrXVGIu','2014-04-04 11:41:03','2014-04-04 11:41:03'),
+	(2,'Geoff','geoff@example.com','$2y$10$w1VCxCL/N87vp/mE3vRNwekDTEwI73E9BpCAux7Wi90Paz0vMksFG','2014-04-04 11:41:15','2014-04-04 11:41:15'),
+	(3,'Bruce','bruce@example.com','$2y$10$BxJLdIUxHd/9A74CzZWTa..eMXRwh39tYCrs4pz9FjHydj4CEXUFy','2014-04-04 11:41:27','2014-04-04 11:41:27');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
