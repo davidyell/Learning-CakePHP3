@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.17)
 # Database: cake3-dev2
-# Generation Time: 2014-04-04 11:50:15 +0000
+# Generation Time: 2014-04-04 15:41:36 +0000
 # ************************************************************
 
 
@@ -47,7 +47,10 @@ LOCK TABLES `answers` WRITE;
 
 INSERT INTO `answers` (`id`, `answer`, `accepted`, `question_id`, `user_id`, `upvotes`, `downvotes`, `created`, `modified`)
 VALUES
-	(1,'You make a question just how you asked this question!',0,1,3,0,0,'2014-04-04 11:42:57','2014-04-04 11:42:57');
+	(1,'You make a question just how you asked this question!',0,1,3,0,0,'2014-04-04 11:42:57','2014-04-04 11:42:57'),
+	(2,'This is my question',0,1,1,0,0,NULL,NULL),
+	(3,'I like the first thing being first most.',0,1,1,0,0,NULL,NULL),
+	(9,'The fourth answer!',0,1,1,0,0,NULL,NULL);
 
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -100,6 +103,7 @@ CREATE TABLE `questions` (
   `upvotes` int(11) NOT NULL DEFAULT '0',
   `downvotes` int(11) NOT NULL DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '0',
+  `answer_count` int(11) NOT NULL DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -110,9 +114,9 @@ CREATE TABLE `questions` (
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
 
-INSERT INTO `questions` (`id`, `title`, `question`, `user_id`, `upvotes`, `downvotes`, `views`, `created`, `modified`)
+INSERT INTO `questions` (`id`, `title`, `question`, `user_id`, `upvotes`, `downvotes`, `views`, `answer_count`, `created`, `modified`)
 VALUES
-	(1,'How do I make a question?','I\'ve been trying to make a question and I just can\'t figure it out. Can anyone help me out with how to create a question?',2,0,0,0,'2014-04-04 11:42:06','2014-04-04 11:42:06');
+	(1,'How do I make a question?','I\'ve been trying to make a question and I just can\'t figure it out. Can anyone help me out with how to create a question?',2,0,0,0,4,'2014-04-04 11:42:06','2014-04-04 11:42:06');
 
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
