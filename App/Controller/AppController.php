@@ -30,4 +30,5 @@ namespace App\Controller;
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends \Cake\Controller\Controller {
+	
 }

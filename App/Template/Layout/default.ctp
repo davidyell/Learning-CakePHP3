@@ -44,6 +44,7 @@
 			<footer class="row">
 				<div class="col-md-12">
 					<p>Example site created to learn CakePHP 3.</p>
+					<p><?php echo $this->Html->link('@yelldavid', 'http://twitter.com/yelldavid');?></p>
 				</div>
 			</footer>
 		</div>
