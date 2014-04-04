@@ -9,6 +9,9 @@ If you want to check it out you can clone the repo.
 Then you'll want to install the dependancies using [Composer](https://getcomposer.org/)  
 `composer install`
 
+## Login
+Login password is just the first part of the users email.
+
 ## Database
 I have added a dump of the database for ease of use. You can find it in `db_dump`.
 
