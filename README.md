@@ -17,3 +17,9 @@ Currently there is a bug in the ORM, which you'll need to either wait for a fix,
 In `vendor/cakephp/cakephp/ORM/ResultSet.php`, you'll want to edit `line 402` to include an array check.  
 
 ` && is_array($results[$alias]) `
+
+## Concepts covered
+* Layouts
+* Views
+* Tables
+* Behaviors (counterCache)
