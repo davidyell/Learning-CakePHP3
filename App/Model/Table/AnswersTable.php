@@ -12,9 +12,15 @@ use Cake\ORM\Table;
 class AnswersTable extends Table {
 
 	public function initialize(array $config) {
+		// Relationships
 		$this->belongsTo('Users');
-		$this->belongsTo('Question');
+		$this->belongsTo('Questions');
 		$this->hasMany('Comments');
+		
+		// Attach behaviours
+		$this->addBehavior('CounterCache', [
+			'Questions' => ['answer_count']
+		]);
 	}
 
 	

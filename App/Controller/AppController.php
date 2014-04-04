@@ -31,4 +31,6 @@ namespace App\Controller;
  */
 class AppController extends \Cake\Controller\Controller {
 	
+	public $components = ['Session'];
+	
 }

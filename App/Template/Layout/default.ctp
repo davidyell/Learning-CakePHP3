@@ -40,7 +40,10 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<?php echo $this->fetch('content');?>
+					<?php
+					echo $this->Session->flash();
+					echo $this->fetch('content');
+					?>
 				</div>
 			</div>
 			

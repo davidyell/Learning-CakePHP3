@@ -1,0 +1,44 @@
+/*
+    Document   : _alerts
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Alert box styles
+*/
+
+$default: #eaeaea;
+$success: #e3f9d4;
+$warning: #f7f5d4;
+$error: #f4d2d2;
+$info: #d2e7f2;
+
+div.alert {
+	margin: 10px 0;
+	padding: 10px 15px;
+	background-color: $default;
+	border-width: 1px;
+	border-style: solid;
+	border-color: darken($default, 15%);
+	border-radius: 5px;
+	color: darken($default, 50%);
+}
+div.alert.success {
+	background-color: $success;
+	border-color: darken($success, 15%);
+	color: darken($success, 50%);
+}
+div.alert.warning {
+	background-color: $warning;
+	border-color: darken($warning, 15%);
+	color: darken($warning, 50%);
+}
+div.alert.error {
+	background-color: $error;
+	border-color: darken($error, 15%);
+	color: darken($error, 50%);
+}
+div.alert.info {
+	background-color: $info;
+	border-color: darken($info, 15%);
+	color: darken($info, 50%);
+}

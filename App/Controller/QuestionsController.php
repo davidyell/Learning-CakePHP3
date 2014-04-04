@@ -18,8 +18,9 @@ class QuestionsController extends AppController {
  */
 	public function index() {
 		$questions = $this->Questions->find()
-			->contain('Users')
+			->contain(['Users'])
 			->order(['Questions.created' => 'DESC']);
+		
 		$this->set('questions', $questions);
 	}
 	

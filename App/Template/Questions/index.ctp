@@ -5,7 +5,7 @@
 		<div class="question">
 			<div class="question-stats">
 				<div class="votes"><span class="count"><?php echo $question->upvotes - $question->downvotes;?></span> votes</div>
-				<div class="answers"><span class="count"><?php echo 0;?></span> answers</div>
+				<div class="answers"><span class="count"><?php echo $question->answer_count;?></span> answers</div>
 				<div class="views"><span class="count"><?php echo $question->views;?></span> views</div>
 			</div>
 			<div class="question-content">
