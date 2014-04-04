@@ -1,0 +1,29 @@
+/*
+    Document   : _navigation
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Styles for navigation
+*/
+nav {
+	margin-top: 30px;
+	ul {
+		li {
+			display: block;
+			float: left;
+			a {
+				display: block;
+				padding: 5px 10px;
+				margin: 0 3px;
+				border-radius: 5px;
+				color: #fff;
+				background-color: #0088cc;
+			}
+			a:hover {
+				text-decoration: none;
+				color: #fff;
+				background-color: darken(#0088cc, 15%);
+			}
+		}
+	}
+}

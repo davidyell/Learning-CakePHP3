@@ -46,7 +46,8 @@ class QuestionsController extends AppController {
 				'Answers' => [
 					'Users' => [
 						'fields' => ['id', 'name']
-					]
+					],
+					'Comments'
 				]
 			])
 			->where(['Questions.id' => $id])

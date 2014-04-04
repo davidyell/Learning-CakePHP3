@@ -1,0 +1,17 @@
+/*
+    Document   : _forms
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Style form elements and fields
+*/
+
+.input {
+	label {
+		display: block;
+	}
+	textarea {
+		width: 100%;
+		height: 200px;
+	}
+}
