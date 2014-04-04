@@ -1,0 +1,28 @@
+/*
+    Document   : _item
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Styles for displaying questions and answers on the site
+*/
+
+.votes {
+	width: 50px;
+	span {
+		width: 50px;
+		float: left;
+		font-size: 20px;
+		text-align: center;
+	}
+}
+
+.questions.view {
+	.question {
+		min-height: 150px;
+	}
+}
+
+.comments {
+	margin: 10px 0;
+	border-top: 1px dotted #efefef;
+}

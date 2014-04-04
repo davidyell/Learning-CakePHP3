@@ -1,0 +1,29 @@
+/*
+    Document   : _questions
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Style the questions
+*/
+
+.questions.index .question {
+	margin: 10px 0;
+	border: 1px solid #efefef;
+}
+.question-stats {
+	& > div {
+		width: 50px;
+		height: 50px;
+		float: left;
+		margin-right: 5px;
+		text-align: center;
+		span {
+			font-size: 25px;
+		}
+	}
+}
+.question-content {
+	h3 {
+		margin-top: 5px;
+	}
+}

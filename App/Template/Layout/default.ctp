@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <?php echo $this->Html->charset();?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,11 @@
 		<?php
 		echo $this->fetch('meta');
 		
-		echo $this->Html->css(['normalize', 'style']);
+		echo $this->Html->css([
+			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', 
+			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css',
+			'style'
+		]);
 		echo $this->fetch('css');
 		
 		echo $this->Html->script('vendor/modernizr-2.6.2.min');
@@ -24,7 +28,25 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-		<?php echo $this->fetch('content');?>
+		<div class="container">
+			<header class="row">
+				<div class="col-md-12">
+					<h1>Cake Exchange</h1>
+				</div>
+			</header>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<?php echo $this->fetch('content');?>
+				</div>
+			</div>
+			
+			<footer class="row">
+				<div class="col-md-12">
+					<p>Example site created to learn CakePHP 3.</p>
+				</div>
+			</footer>
+		</div>
 		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>

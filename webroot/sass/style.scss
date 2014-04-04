@@ -1,0 +1,29 @@
+/*
+    Document   : style
+    Created on : Apr 4, 2014, 10:17:03 AM
+    Author     : David Yell <neon1024@gmail.com>
+    Description:
+        Main stylesheet for the site. Specific parts should be broken out into
+		partials and imported. This file is mostly for global layout.
+*/
+
+@import "_questions";
+@import "_item";
+
+body {
+	background-color: #ccc;
+}
+.container {
+	background-color: #fff;
+}
+footer {
+	p {
+		text-align: center;
+	}
+}
+
+
+.meta {
+	font-size: 12px;
+	float: right;
+}
