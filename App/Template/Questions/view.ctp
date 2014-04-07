@@ -4,8 +4,10 @@
 	
 	<h3>Answers</h3>
 	<?php
-	foreach($question->answers as $answer) {
-		echo $this->element('item', ['type' => 'answer', 'data' => $answer]);
+	if (!empty($question->answers)) {
+		foreach($question->answers as $answer) {
+			echo $this->element('item', ['type' => 'answer', 'data' => $answer]);
+		}
 	}
 	?>
 	
@@ -13,8 +15,8 @@
 		<h3>Your answer</h3>
 		<?php
 		echo $this->Form->create('Answers', ['url' => ['controller' => 'answers', 'action' => 'add', $question->id]]);
-		echo $this->Form->input('answer', ['type' => 'textarea', 'label' => false]);
-		echo $this->Form->submit('Post answer');
+		echo $this->Form->input('Answers.answer', ['type' => 'textarea', 'label' => false]);
+		echo $this->Form->submit('Post answer', ['class' => 'btn btn-success']);
 		echo $this->Form->end();
 		?>
 	</div>

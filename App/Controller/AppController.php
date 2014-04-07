@@ -21,6 +21,8 @@
  */
 namespace App\Controller;
 
+use Cake\Event\Event;
+
 /**
  * Application Controller
  *
@@ -31,6 +33,32 @@ namespace App\Controller;
  */
 class AppController extends \Cake\Controller\Controller {
 	
-	public $components = ['Session'];
+/**
+ * Global components
+ * 
+ * @var array
+ */
+	public $components = [
+		'Session',
+		'Auth' => [
+			'authenticate' => [
+				'Form' => [
+					'fields' => ['username' => 'email']
+				]
+			],
+			'loginAction' => ['controller' => 'users', 'action' => 'login'],
+			'logoutRedirect' => ['controller' => 'questions', 'action' => 'index']
+		]
+	];
+	
+/**
+ * Global beforeFilter
+ * 
+ * @param \Cake\Event\Event $event
+ * @return void
+ */
+	public function beforeFilter(Event $event) {
+		$this->Auth->allow(['index', 'view']);
+	}
 	
 }

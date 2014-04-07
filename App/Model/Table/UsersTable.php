@@ -16,6 +16,4 @@ class UsersTable extends Table {
 		$this->hasMany('Comments');
 		$this->hasMany('Questions');
 	}
-
-	
 }

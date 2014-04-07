@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "17c9811fda668b89439defe0a8b3f5f8da137c2a"
+                "reference": "b3e8cea903db32a697e150008c09e2c6e1335da8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/17c9811fda668b89439defe0a8b3f5f8da137c2a",
-                "reference": "17c9811fda668b89439defe0a8b3f5f8da137c2a",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/b3e8cea903db32a697e150008c09e2c6e1335da8",
+                "reference": "b3e8cea903db32a697e150008c09e2c6e1335da8",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-04 07:24:43"
+            "time": "2014-04-07 14:40:57"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

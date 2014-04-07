@@ -39,20 +39,46 @@ class QuestionsController extends AppController {
 		$question = $this->Questions->find()
 			->contain([
 				'Users',
-				'Comments' => [
-					'Users' => [
-						'fields' => ['id', 'name']
-					]
-				], 
-				'Answers' => [
-					'Users' => [
-						'fields' => ['id', 'name']
-					],
-					'Comments'
-				]
+				'Comments' => function($q) {
+					return $q
+							->contain(['Users' => ['fields' => ['id', 'name']]])
+							->order(['Comments.created' => 'DESC']);
+				},
+				'Answers' => function($q) {
+					return $q
+							->contain([
+								'Users' => ['fields' => ['id', 'name']],
+								'Comments' => function($q) {
+									return $q
+											->contain(['Users' => ['fields' => ['id', 'name']]])
+											->order(['Comments.created' => 'DESC']);
+								}
+							])
+							->order(['Answers.upvotes - Answers.downvotes' => 'DESC', 'Answers.created' => 'DESC']);
+				}
 			])
 			->where(['Questions.id' => $id])
 			->first();
 		$this->set('question', $question);
+	}
+	
+/**
+ * Save a new Question
+ * 
+ * @return void
+ */
+	public function add() {
+		$this->request->data['user_id'] = $this->Auth->user('id');
+		$question = $this->Questions->newEntity($this->request->data);
+		if ($this->request->is('post')) {
+			if ($savedQuestion = $this->Questions->save($question)) {
+				$this->Session->setFlash(__('Question has been saved'), 'flash', ['class' => 'success']);
+				return $this->redirect(['controller' => 'question', 'action' => 'view', $savedQuestion->id]);
+			} else {
+				$this->Session->setFlash(__('Question could not be saved'), 'flash', ['class' => 'error']);
+			}
+			
+		}
+		
 	}
 }
