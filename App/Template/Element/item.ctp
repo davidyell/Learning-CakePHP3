@@ -18,7 +18,7 @@
 		<?php if (!empty($data->comments)): ?>
 			<?php foreach ($data->comments as $comment):?>
 				<div class="comment">
-					<p><?php echo $comment->comment;?> - <?php echo $this->Html->link($comment->user->name, ['controller' => 'users', 'action' => 'view', $comment->user->id]);?> <?php echo $this->Time->nice($data->created);?></p>
+					<p><?php echo $comment->comment;?> - <?php echo $this->Html->link($comment->user->name, ['controller' => 'users', 'action' => 'view', $comment->user->id]);?> <?php echo $this->Time->nice($comment->created);?></p>
 				</div>
 			<?php endforeach;?>
 		<?php endif;?>

@@ -21,7 +21,6 @@
  */
 namespace App\Controller;
 
-use Cake\Controller\Component\Auth\BlowfishPasswordHasher;
 use Cake\Event\Event;
 
 /**
@@ -48,6 +47,7 @@ class AppController extends \Cake\Controller\Controller {
 				]
 			],
 			'loginAction' => ['controller' => 'users', 'action' => 'login'],
+			'logoutRedirect' => ['controller' => 'questions', 'action' => 'index']
 		]
 	];
 	

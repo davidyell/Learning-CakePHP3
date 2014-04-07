@@ -30,10 +30,10 @@
 
 		<div class="container">
 			<header class="row">
-				<div class="col-md-8">
+				<div class="col-md-4">
 					<h1>Cake Exchange</h1>
 				</div>
-				<div class='col-md-4'>
+				<div class='col-md-8'>
 					<?php echo $this->element('navigation');?>
 				</div>
 			</header>
