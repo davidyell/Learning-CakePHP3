@@ -21,6 +21,7 @@ class AnswersTable extends Table {
 		$this->addBehavior('CounterCache', [
 			'Questions' => ['answer_count']
 		]);
+		$this->addBehavior('Votable');
 	}
 
 	

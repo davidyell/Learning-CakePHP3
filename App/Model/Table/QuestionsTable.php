@@ -16,6 +16,9 @@ class QuestionsTable extends Table {
 		$this->belongsTo('Users');
 		$this->hasMany('Answers');
 		$this->hasMany('Comments');
+
+		// Behaviors
+		$this->addBehavior('Votable');
 	}
 	
 }
