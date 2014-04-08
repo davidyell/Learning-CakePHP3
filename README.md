@@ -30,3 +30,4 @@ In `vendor/cakephp/cakephp/ORM/ResultSet.php`, you'll want to edit `line 402` to
 * Entities
 * Query builder w/ containable
 * AuthComponent
+* Behaviors
