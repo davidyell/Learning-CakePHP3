@@ -77,8 +77,21 @@ class QuestionsController extends AppController {
 			} else {
 				$this->Session->setFlash(__('Question could not be saved'), 'flash', ['class' => 'error']);
 			}
-			
 		}
-		
+	}
+
+/**
+ * Vote a question up or down
+ *
+ * @param string $dir The type of vote
+ * @param int $id The id of the item being voted on
+ */
+	public function vote($dir, $id) {
+		if ($this->Questions->vote($dir, $id)) {
+			$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+		} else {
+			$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+		}
+		return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 	}
 }

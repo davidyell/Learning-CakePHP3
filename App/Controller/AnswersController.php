@@ -24,5 +24,20 @@ class AnswersController extends AppController {
 		
 		return $this->redirect(['controller' => 'questions', 'action' => 'view', $id]);
 	}
-	
+
+/**
+ * Vote an answer up or down
+ *
+ * @param string $dir The type of vote
+ * @param int $id The id of the item being voted on
+ */
+	public function vote($dir, $id) {
+		if ($this->Answers->vote($dir, $id)) {
+			$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+		} else {
+			$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+		}
+		return $this->redirect(['controller' => 'questions', 'action' => 'index']);
+	}
+
 }
