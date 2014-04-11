@@ -35,7 +35,7 @@ class VotableBehavior extends Behavior {
  *
  * @param string $dir
  * @param id $id
- * @return mixed Entity or false
+ * @return mixed Success, new value of votes || false on failure 
  */
 	public function vote($dir, $id) {
 		$item = $this->_table->get($id);
@@ -43,10 +43,14 @@ class VotableBehavior extends Behavior {
 		if ($dir === 'up') {
 			$item->set('upvotes', $item->upvotes + 1);
 		} else if ($dir === 'down') {
-			$item->set('downvotes', $this->downvotes + 1);
+			$item->set('downvotes', $item->downvotes + 1);
 		}
 
-		return (bool)$this->_table->save($item);
+		if ($this->_table->save($item)) {
+			return $item->upvotes - $item->downvotes;
+		}
+		
+		return false;
 	}
 
 }
