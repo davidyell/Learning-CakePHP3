@@ -15,12 +15,6 @@ Login password is just the first part of the users email.
 ## Database
 I have added a dump of the database for ease of use. You can find it in `db_dump`.
 
-## Gotchas
-Currently there is a bug in the ORM, which you'll need to either wait for a fix, or just put a hack in.  
-In `vendor/cakephp/cakephp/ORM/ResultSet.php`, you'll want to edit `line 402` to include an array check.  
-
-` && is_array($results[$alias]) `
-
 ## Concepts covered
 * Layouts
 * Views
