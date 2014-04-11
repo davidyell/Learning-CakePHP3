@@ -41,6 +41,8 @@ use Cake\Routing\Router;
  *  `App\Controller\Manager` and `/manager/controller/index`
  *
  */
+	Router::parseExtensions('json');
+
 	// Configure::write('Routing.prefixes', array('admin'));
 
 	Router::connect('/', ['controller' => 'questions', 'action' => 'index']);

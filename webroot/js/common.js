@@ -17,11 +17,11 @@ $(function () {
 		
 		$(this).addClass('voted');
 		var linkElement = $(this);
-		var url = '/' + $(this).data('controller') + '/vote/' + $(this).data('dir') + '/' + $(this).data('id');
+		var url = '/' + $(this).data('controller') + '/vote/' + $(this).data('dir') + '/' + $(this).data('id') + '.json';
 		
 		$.get(url, function (data, status) {
-			$(linkElement).siblings('span.votes').html(data);
-		});
+			$(linkElement).siblings('span.votes').html(data.votes);
+		}, 'json');
 	});
 	
 // Dialogs

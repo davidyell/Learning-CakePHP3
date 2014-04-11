@@ -91,9 +91,8 @@ class QuestionsController extends AppController {
 		$votes = $this->Questions->vote($dir, $id);
 		
 		if ($this->request->is('ajax')) {
-			return new Response([
-				'body' => json_encode($votes)
-			]);
+			$this->set('votes', $votes);
+			$this->set('_serialize', ['votes']);
 		} else {
 			if ($votes !== false) {
 				$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);

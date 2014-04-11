@@ -48,7 +48,8 @@ class AppController extends \Cake\Controller\Controller {
 			],
 			'loginAction' => ['controller' => 'users', 'action' => 'login'],
 			'logoutRedirect' => ['controller' => 'questions', 'action' => 'index']
-		]
+		],
+		'RequestHandler'
 	];
 	
 /**
