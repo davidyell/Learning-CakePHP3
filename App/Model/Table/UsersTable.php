@@ -12,8 +12,12 @@ use Cake\ORM\Table;
 class UsersTable extends Table {
 
 	public function initialize(array $config) {
+		// Relationships
 		$this->hasMany('Answers');
 		$this->hasMany('Comments');
 		$this->hasMany('Questions');
+		
+		// Attach behaviours
+		$this->addBehavior('Timestamp');
 	}
 }

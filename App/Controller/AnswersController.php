@@ -15,8 +15,8 @@ class AnswersController extends AppController {
 		$this->request->data['Answers']['question_id'] = $id;
 		$this->request->data['Answers']['user_id'] = $this->Auth->user('id');
 		
-		$answer = $this->Answers->newEntity($this->request->data);
 		if ($this->request->is('post')) {
+			$answer = $this->Answers->newEntity($this->request->data);
 			if ($this->Answers->save($answer)) {
 				$this->Session->setFlash(__('Answer has been saved'), 'flash', ['class' => 'success']);
 			} else {

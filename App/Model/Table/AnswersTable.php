@@ -22,6 +22,7 @@ class AnswersTable extends Table {
 			'Questions' => ['answer_count']
 		]);
 		$this->addBehavior('Votable');
+		$this->addBehavior('Timestamp');
 	}
 
 	

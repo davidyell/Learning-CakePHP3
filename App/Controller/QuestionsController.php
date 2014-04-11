@@ -43,7 +43,7 @@ class QuestionsController extends AppController {
 				'Comments' => function($q) {
 					return $q
 							->contain(['Users' => ['fields' => ['id', 'name']]])
-							->order(['Comments.created' => 'DESC']);
+							->order(['Comments.created' => 'ASC']);
 				},
 				'Answers' => function($q) {
 					return $q
@@ -52,7 +52,7 @@ class QuestionsController extends AppController {
 								'Comments' => function($q) {
 									return $q
 											->contain(['Users' => ['fields' => ['id', 'name']]])
-											->order(['Comments.created' => 'DESC']);
+											->order(['Comments.created' => 'ASC']);
 								}
 							])
 							->order(['Answers.upvotes - Answers.downvotes' => 'DESC', 'Answers.created' => 'DESC']);
@@ -72,8 +72,8 @@ class QuestionsController extends AppController {
  */
 	public function add() {
 		$this->request->data['user_id'] = $this->Auth->user('id');
-		$question = $this->Questions->newEntity($this->request->data);
 		if ($this->request->is('post')) {
+			$question = $this->Questions->newEntity($this->request->data);
 			if ($savedQuestion = $this->Questions->save($question)) {
 				$this->Session->setFlash(__('Question has been saved'), 'flash', ['class' => 'success']);
 				return $this->redirect(['controller' => 'question', 'action' => 'view', $savedQuestion->id]);

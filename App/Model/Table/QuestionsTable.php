@@ -19,6 +19,7 @@ class QuestionsTable extends Table {
 
 		// Behaviors
 		$this->addBehavior('Votable');
+		$this->addBehavior('Timestamp');
 	}
 	
 /**

@@ -29,8 +29,8 @@ class CommentsController extends AppController {
 		}
 		$this->request->data['user_id'] = $this->Auth->user('id');
 		
-		$comment = $this->Comments->newEntity($this->request->data);
 		if ($this->request->is('post')) {
+			$comment = $this->Comments->newEntity($this->request->data);
 			if ($this->Comments->save($comment)) {
 				$this->Session->setFlash(__('Comment has been saved'), 'flash', ['class' => 'success']);
 				return $this->redirect(['controller' => 'questions', 'action' => 'index']);
