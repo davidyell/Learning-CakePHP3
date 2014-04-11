@@ -61,6 +61,8 @@ class QuestionsController extends AppController {
 			->where(['Questions.id' => $id])
 			->first();
 		$this->set('question', $question);
+		
+		$this->Questions->addView($id);
 	}
 	
 /**

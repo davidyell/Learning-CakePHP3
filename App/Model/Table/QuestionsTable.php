@@ -21,4 +21,16 @@ class QuestionsTable extends Table {
 		$this->addBehavior('Votable');
 	}
 	
+/**
+ * Add a view to a question
+ * 
+ * @param int $id
+ * @return bool
+ */
+	public function addView($id) {
+		$question = $this->get($id);
+		$question->set('views', $question->views + 1);
+		return (bool)$this->save($question);
+	}
+	
 }
