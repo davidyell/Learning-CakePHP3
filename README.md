@@ -22,7 +22,7 @@ I have added a dump of the database for ease of use. You can find it in `db_dump
 * Behaviors (counterCache)
 * Table objects
 * Entities
-* Query builder w/ containable
+* Query builder w/ Containable
 * AuthComponent
-* Behaviors
+* Behaviors w/ Tests
 * AJAX
