@@ -7,6 +7,10 @@
 		partials and imported. This file is mostly for global layout.
 */
 
+$fgColor: #333;
+$bgColor: #ccc;
+
+
 @import "_questions";
 @import "_item";
 @import "_forms";
@@ -14,7 +18,8 @@
 @import "_alerts";
 
 body {
-	background-color: #ccc;
+	color: $fgColor;
+	background-color: $bgColor;
 }
 .container {
 	background-color: #fff;
@@ -45,4 +50,25 @@ footer {
 .meta {
 	font-size: 12px;
 	float: right;
+}
+
+.dialog {
+  padding: 15px 30px;
+  position: fixed;
+  top: 50%;
+  left: 45%;
+  background-color: rgba(0,0,0, 0.6);
+  color: #fff;
+  border-radius: 8px;
+  span.glyphicon.glyphicon-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor: pointer;
+  }
+	p {
+    margin: 0;
+		text-align: center;
+    font-size: 24px;
+	}
 }

@@ -16,6 +16,7 @@
 		echo $this->Html->css([
 			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', 
 			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css',
+			'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 			'style'
 		]);
 		echo $this->fetch('css');
@@ -55,7 +56,20 @@
 			</footer>
 		</div>
 		
+		<div id="loading" class="dialog" style="display:none">
+			<p><span class="glyphicon glyphicon-cloud-download"></span></p>
+			<p>Loading</p>
+		</div>
+		
+		<div id="login" class="dialog" style="display:none">
+			<span class="glyphicon glyphicon-remove"></span>
+			<p><span class="glyphicon glyphicon-ban-circle"></span></p>
+			<p>You must be logged in</p>
+			<p><?php echo $this->Html->link('Login', ['controller' => 'users', 'action' => 'login'], ['class' => 'btn btn-success']);?></p>
+		</div>
+		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 		
 		<?php

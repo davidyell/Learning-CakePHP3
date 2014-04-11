@@ -8,6 +8,7 @@
 namespace App\Controller;
 
 use Cake\Error\NotFoundException;
+use Cake\Network\Response;
 
 class QuestionsController extends AppController {
 
@@ -87,11 +88,20 @@ class QuestionsController extends AppController {
  * @param int $id The id of the item being voted on
  */
 	public function vote($dir, $id) {
-		if ($this->Questions->vote($dir, $id)) {
-			$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+		$votes = $this->Questions->vote($dir, $id);
+		
+		if ($this->request->is('ajax')) {
+			return new Response([
+				'body' => json_encode($votes)
+			]);
 		} else {
-			$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+			if ($votes !== false) {
+				$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+			} else {
+				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+			}
+			
+			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 		}
-		return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 	}
 }

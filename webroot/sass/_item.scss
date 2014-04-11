@@ -8,11 +8,14 @@
 
 .votes {
 	width: 50px;
-	span {
+	& > span, a > span {
 		width: 50px;
 		float: left;
 		font-size: 20px;
 		text-align: center;
+	}
+	a {
+		color: lighten($fgColor, 15%);
 	}
 }
 

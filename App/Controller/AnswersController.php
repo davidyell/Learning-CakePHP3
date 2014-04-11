@@ -7,6 +7,8 @@
 
 namespace App\Controller;
 
+use Cake\Network\Response;
+
 class AnswersController extends AppController {
 	
 	public function add($id) {
@@ -30,14 +32,24 @@ class AnswersController extends AppController {
  *
  * @param string $dir The type of vote
  * @param int $id The id of the item being voted on
+ * @return void
  */
 	public function vote($dir, $id) {
-		if ($this->Answers->vote($dir, $id)) {
-			$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+		$votes = $this->Answers->vote($dir, $id);
+		
+		if ($this->request->is('ajax')) {
+			return new Response([
+				'body' => json_encode($votes)
+			]);
 		} else {
-			$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+			if ($votes !== false) {
+				$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+			} else {
+				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+			}
+			
+			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 		}
-		return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 	}
 
 }
