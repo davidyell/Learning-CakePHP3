@@ -10,7 +10,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 class Question extends Entity {
-	
+
 /**
  * Get the total number of votes
  * 
@@ -19,5 +19,4 @@ class Question extends Entity {
 	public function getVotes() {
 		return $this->upvotes - $this->downvotes;
 	}
-	
 }
