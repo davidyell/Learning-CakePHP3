@@ -10,7 +10,7 @@ namespace App\Controller;
 use Cake\Controller\Component\Auth\BlowfishPasswordHasher;
 
 class UsersController extends AppController {
-	
+
 /**
  * beforeSave
  * 
@@ -23,7 +23,7 @@ class UsersController extends AppController {
 			$pw = new BlowfishPasswordHasher();
 			$this->data['User']['password'] = $pw->hash($this->data['User']['password']);
 		}
-		
+
 		return true;
 	}
 
@@ -41,7 +41,7 @@ class UsersController extends AppController {
 			}
 		}
 	}
-	
+
 /**
  * Log a user out
  * 
@@ -50,5 +50,4 @@ class UsersController extends AppController {
 	public function logout() {
 		return $this->redirect($this->Auth->logout());
 	}
-	
 }

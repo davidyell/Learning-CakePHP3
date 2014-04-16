@@ -10,11 +10,11 @@ namespace App\Controller;
 use Cake\Network\Response;
 
 class AnswersController extends AppController {
-	
+
 	public function add($id) {
 		$this->request->data['Answers']['question_id'] = $id;
 		$this->request->data['Answers']['user_id'] = $this->Auth->user('id');
-		
+
 		if ($this->request->is('post')) {
 			$answer = $this->Answers->newEntity($this->request->data);
 			if ($this->Answers->save($answer)) {
@@ -23,7 +23,7 @@ class AnswersController extends AppController {
 				$this->Session->setFlash(__('Answer could not be saved'), 'flash', ['class' => 'error']);
 			}
 		}
-		
+
 		return $this->redirect(['controller' => 'questions', 'action' => 'view', $id]);
 	}
 
@@ -36,7 +36,7 @@ class AnswersController extends AppController {
  */
 	public function vote($dir, $id) {
 		$votes = $this->Answers->vote($dir, $id);
-		
+
 		if ($this->request->is('ajax')) {
 			$this->set('votes', $votes);
 			$this->set('_serialize', ['votes']);
@@ -46,7 +46,7 @@ class AnswersController extends AppController {
 			} else {
 				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
 			}
-			
+
 			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 		}
 	}

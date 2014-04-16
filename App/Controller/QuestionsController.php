@@ -21,22 +21,22 @@ class QuestionsController extends AppController {
 		$questions = $this->Questions->find()
 			->contain(['Users'])
 			->order(['Questions.created' => 'DESC']);
-		
+
 		$this->set('questions', $questions);
 	}
-	
+
 /**
  * View a question
  * 
  * @param int $id
- * @throws NotFoundException
+ * @throws Cake\Error\NotFoundException
  * @return void
  */
 	public function view($id) {
 		if (!$id) {
 			throw new NotFoundException(__('Question not found'));
 		}
-		
+
 		$question = $this->Questions->find()
 			->contain([
 				'Users',
@@ -61,10 +61,10 @@ class QuestionsController extends AppController {
 			->where(['Questions.id' => $id])
 			->first();
 		$this->set('question', $question);
-		
+
 		$this->Questions->addView($id);
 	}
-	
+
 /**
  * Save a new Question
  * 
@@ -91,7 +91,7 @@ class QuestionsController extends AppController {
  */
 	public function vote($dir, $id) {
 		$votes = $this->Questions->vote($dir, $id);
-		
+
 		if ($this->request->is('ajax')) {
 			$this->set('votes', $votes);
 			$this->set('_serialize', ['votes']);
@@ -101,7 +101,7 @@ class QuestionsController extends AppController {
 			} else {
 				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
 			}
-			
+
 			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 		}
 	}
