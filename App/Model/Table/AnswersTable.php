@@ -16,7 +16,7 @@ class AnswersTable extends Table {
 		$this->belongsTo('Users');
 		$this->belongsTo('Questions');
 		$this->hasMany('Comments');
-		
+
 		// Attach behaviours
 		$this->addBehavior('CounterCache', [
 			'Questions' => ['answer_count']
@@ -24,6 +24,4 @@ class AnswersTable extends Table {
 		$this->addBehavior('Votable');
 		$this->addBehavior('Timestamp');
 	}
-
-	
 }

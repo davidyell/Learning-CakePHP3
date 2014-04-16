@@ -10,7 +10,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 
 class QuestionsTable extends Table {
-	
+
 	public function initialize(array $config) {
 		// Table relationships
 		$this->belongsTo('Users');
@@ -21,7 +21,7 @@ class QuestionsTable extends Table {
 		$this->addBehavior('Votable');
 		$this->addBehavior('Timestamp');
 	}
-	
+
 /**
  * Add a view to a question
  * 
@@ -33,5 +33,4 @@ class QuestionsTable extends Table {
 		$question->set('views', $question->views + 1);
 		return (bool)$this->save($question);
 	}
-	
 }

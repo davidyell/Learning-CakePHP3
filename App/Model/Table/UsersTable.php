@@ -16,7 +16,7 @@ class UsersTable extends Table {
 		$this->hasMany('Answers');
 		$this->hasMany('Comments');
 		$this->hasMany('Questions');
-		
+
 		// Attach behaviours
 		$this->addBehavior('Timestamp');
 	}

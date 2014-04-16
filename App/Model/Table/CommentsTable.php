@@ -16,10 +16,8 @@ class CommentsTable extends Table {
 		$this->belongsTo('Answers');
 		$this->belongsTo('Questions');
 		$this->belongsTo('Users');
-		
+
 		// Behaviours
 		$this->addBehavior('Timestamp');
 	}
-
-	
 }
