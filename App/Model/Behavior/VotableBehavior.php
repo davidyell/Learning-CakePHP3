@@ -17,7 +17,7 @@ class VotableBehavior extends Behavior {
  *
  * @var \Cake\ORM\Table
  */
-	public $_table = null;
+	public $Table = null;
 
 /**
  * Construct the behavior to get a copy of the table
@@ -27,7 +27,7 @@ class VotableBehavior extends Behavior {
  */
 	public function __construct(Table $table, array $config = array()) {
 		parent::__construct($table, $config);
-		$this->_table = $table;
+		$this->Table = $table;
 	}
 
 /**
@@ -38,18 +38,18 @@ class VotableBehavior extends Behavior {
  * @return mixed Success, new value of votes || false on failure 
  */
 	public function vote($dir, $id) {
-		$item = $this->_table->get($id);
+		$item = $this->Table->get($id);
 
 		if ($dir === 'up') {
 			$item->set('upvotes', $item->upvotes + 1);
-		} else if ($dir === 'down') {
+		} elseif ($dir === 'down') {
 			$item->set('downvotes', $item->downvotes + 1);
 		}
 
-		if ($this->_table->save($item)) {
+		if ($this->Table->save($item)) {
 			return $item->upvotes - $item->downvotes;
 		}
-		
+
 		return false;
 	}
 
