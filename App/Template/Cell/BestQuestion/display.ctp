@@ -1,3 +1,4 @@
 <div class="cell best-question">
-	<?php echo $this->Html->link("<h3>" . $bestQuestion->getTitle() . "</h3>", ['controller' => 'questions', 'action' => 'view', $bestQuestion->getId()]);?>
+	<h3>Most upvoted question</h3>
+	<p><?php echo $this->Html->link($bestQuestion->title, ['controller' => 'questions', 'action' => 'view', $bestQuestion->id]);?></p>
 </div>

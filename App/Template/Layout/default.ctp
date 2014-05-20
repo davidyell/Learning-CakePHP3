@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			
-			<?php // echo $this->cell('BestQuestion');?>
+			<?php echo $this->cell('BestQuestion');?>
 			
 			<footer class="row">
 				<div class="col-md-12">

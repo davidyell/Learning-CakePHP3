@@ -12,8 +12,8 @@ use Cake\View\Cell;
 class BestQuestionCell extends Cell {
 	
 	public function display() {
-		$this->loadModel('Question');
-		$best = $this->Question->find()
+		$this->loadModel('Questions');
+		$best = $this->Questions->find()
 			->order('upvotes DESC')
 			->first();
 		$this->set('bestQuestion', $best);
