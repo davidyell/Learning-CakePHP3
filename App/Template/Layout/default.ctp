@@ -48,6 +48,8 @@
 				</div>
 			</div>
 			
+			<?php // echo $this->cell('BestQuestion');?>
+			
 			<footer class="row">
 				<div class="col-md-12">
 					<p>Example site created to learn CakePHP 3.</p>
