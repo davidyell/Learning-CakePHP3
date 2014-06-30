@@ -12,7 +12,7 @@
 				<h3><?php echo $this->Html->link($question->title, ['controller' => 'questions', 'action' => 'view', $question->id]);?></h3>
 				<p class="meta">
 					<?php echo $this->Html->link($question->user->name, ['controller' => 'users', 'action' => 'view', $question->user->id]);?> on 
-					<?php echo $question->created->format(DATE_RFC1036);?>
+					<?php echo $this->Time->nice($question->created);?>
 				</p>
 			</div>
 			<div class="clearfix"><!--blank--></div>
