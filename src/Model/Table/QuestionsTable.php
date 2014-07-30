@@ -11,6 +11,12 @@ use Cake\ORM\Table;
 
 class QuestionsTable extends Table {
 
+/**
+ * Setup the table and relationships
+ *
+ * @param array $config Configuration options
+ * @return void
+ */
 	public function initialize(array $config) {
 		// Table relationships
 		$this->belongsTo('Users');
@@ -25,7 +31,7 @@ class QuestionsTable extends Table {
 /**
  * Add a view to a question
  * 
- * @param int $id
+ * @param int $id The id of the question being viewed
  * @return bool
  */
 	public function addView($id) {

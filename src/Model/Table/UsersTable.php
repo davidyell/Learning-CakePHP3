@@ -11,6 +11,12 @@ use Cake\ORM\Table;
 
 class UsersTable extends Table {
 
+/**
+ * Setup the table and relationships
+ *
+ * @param array $config Configuration options
+ * @return void
+ */
 	public function initialize(array $config) {
 		// Relationships
 		$this->hasMany('Answers');

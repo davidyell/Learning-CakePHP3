@@ -8,7 +8,6 @@
 namespace App\Controller;
 
 use Cake\Error\NotFoundException;
-use Cake\Network\Response;
 
 class QuestionsController extends AppController {
 
@@ -28,7 +27,7 @@ class QuestionsController extends AppController {
 /**
  * View a question
  * 
- * @param int $id
+ * @param int $id The id of the question to view
  * @throws Cake\Error\NotFoundException
  * @return void
  */
@@ -42,20 +41,20 @@ class QuestionsController extends AppController {
 				'Users',
 				'Comments' => function($q) {
 					return $q
-							->contain(['Users' => ['fields' => ['id', 'name']]])
-							->order(['Comments.created' => 'ASC']);
+						->contain(['Users' => ['fields' => ['id', 'name']]])
+						->order(['Comments.created' => 'ASC']);
 				},
 				'Answers' => function($q) {
 					return $q
-							->contain([
-								'Users' => ['fields' => ['id', 'name']],
-								'Comments' => function($q) {
-									return $q
-											->contain(['Users' => ['fields' => ['id', 'name']]])
-											->order(['Comments.created' => 'ASC']);
-								}
-							])
-							->order(['Answers.upvotes - Answers.downvotes' => 'DESC', 'Answers.created' => 'DESC']);
+						->contain([
+							'Users' => ['fields' => ['id', 'name']],
+							'Comments' => function($q) {
+								return $q
+									->contain(['Users' => ['fields' => ['id', 'name']]])
+									->order(['Comments.created' => 'ASC']);
+							}
+						])
+						->order(['Answers.upvotes - Answers.downvotes' => 'DESC', 'Answers.created' => 'DESC']);
 				}
 			])
 			->where(['Questions.id' => $id])
@@ -88,6 +87,7 @@ class QuestionsController extends AppController {
  *
  * @param string $dir The type of vote
  * @param int $id The id of the item being voted on
+ * @return redirect
  */
 	public function vote($dir, $id) {
 		$votes = $this->Questions->vote($dir, $id);

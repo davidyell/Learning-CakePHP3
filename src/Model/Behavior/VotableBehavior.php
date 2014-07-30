@@ -22,8 +22,8 @@ class VotableBehavior extends Behavior {
 /**
  * Construct the behavior to get a copy of the table
  *
- * @param \Cake\ORM\Table $table
- * @param array $config
+ * @param \Cake\ORM\Table $table The table object
+ * @param array $config Array of config options for the behaviour
  */
 	public function __construct(Table $table, array $config = array()) {
 		parent::__construct($table, $config);
@@ -33,8 +33,8 @@ class VotableBehavior extends Behavior {
 /**
  * Add a vote to an item
  *
- * @param string $dir
- * @param id $id
+ * @param string $dir The type of vote up or down
+ * @param id $id The id of the item being voted upon
  * @return mixed Success, new value of votes || false on failure 
  */
 	public function vote($dir, $id) {

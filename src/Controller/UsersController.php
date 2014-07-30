@@ -14,8 +14,8 @@ class UsersController extends AppController {
 /**
  * beforeSave
  * 
- * @param array $options
- * @return boolean
+ * @param array $options Array of callback options
+ * @return bool
  */
 	public function beforeSave($options = array()) {
 		// Hash a new users password

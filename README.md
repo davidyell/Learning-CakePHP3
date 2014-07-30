@@ -27,7 +27,17 @@ I have added a dump of the database for ease of use. You can find it in `db_dump
 * Behaviors w/ Tests
 * AJAX
 
+## Code sniffer
+In order to run the code sniffer you will need to set the path to the CakePHP standard.
+
+```bash
+$ vendor/bin/phpcs --config-set default_standard CakePHP
+$ vendor/bin/phpcs --config-set installed_paths vendor/cakephp/cakephp-codesniffer
+```
+
 ## Todo
 * ~~Upgrade to alpha-2~~  
  * ~~Refactor App to Src~~
  * ~~Update `routes.php`~~
+* ~~Include code sniffer~~
+ * ~~Fix phpcs errors~~

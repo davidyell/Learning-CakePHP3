@@ -11,6 +11,12 @@ use Cake\Network\Response;
 
 class AnswersController extends AppController {
 
+/**
+ * Add an answer to a question
+ *
+ * @param int $id Question id to which the answer is added
+ * @return void
+ */
 	public function add($id) {
 		$this->request->data['Answers']['question_id'] = $id;
 		$this->request->data['Answers']['user_id'] = $this->Auth->user('id');

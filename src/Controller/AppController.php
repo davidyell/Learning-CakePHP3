@@ -55,7 +55,7 @@ class AppController extends \Cake\Controller\Controller {
 /**
  * Global beforeFilter
  * 
- * @param \Cake\Event\Event $event
+ * @param \Cake\Event\Event $event The current event
  * @return void
  */
 	public function beforeFilter(Event $event) {

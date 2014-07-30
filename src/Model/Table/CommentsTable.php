@@ -11,6 +11,12 @@ use Cake\ORM\Table;
 
 class CommentsTable extends Table {
 
+/**
+ * Setup the table and relationships
+ * 
+ * @param array $config Configuration options
+ * @return void
+ */
 	public function initialize(array $config) {
 		// Relationships
 		$this->belongsTo('Answers');
