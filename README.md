@@ -1,5 +1,5 @@
 # Cake Exchange!
-A project built using the Cake 3 dev2 preview.  
+A project built using the Cake 3 alpha-1.  
 This is a quick site which emulates Stack Exchange in order to learn the new version of the framework.
 
 ## Setup
@@ -26,3 +26,8 @@ I have added a dump of the database for ease of use. You can find it in `db_dump
 * AuthComponent
 * Behaviors w/ Tests
 * AJAX
+
+## Todo
+* Upgrade to alpha-2
+** Refactor App to Src
+** Update `routes.php`
