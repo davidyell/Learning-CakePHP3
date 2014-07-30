@@ -21,7 +21,7 @@ $config = [
  * - dir - Name of app directory.
  * - webroot - The webroot directory.
  * - www_root - The file path to webroot.
- * - baseUrl - To configure CakePHP *not* to use mod_rewrite and to
+ * - baseUrl - To configure CakePHP to *not* use mod_rewrite and to
  *   use CakePHP pretty URLs, remove these .htaccess
  *   files:
  *      /.htaccess
@@ -37,7 +37,7 @@ $config = [
 		'namespace' => 'App',
 		'encoding' => 'UTF-8',
 		'base' => false,
-		'dir' => 'App',
+		'dir' => 'src',
 		'webroot' => 'webroot',
 		'www_root' => WWW_ROOT,
 		// 'baseUrl' => env('SCRIPT_NAME'),
@@ -46,7 +46,7 @@ $config = [
 		'cssBaseUrl' => 'css/',
 		'jsBaseUrl' => 'js/',
 		'paths' => [
-			'plugins' => [ROOT . '/Plugin/'],
+			'plugins' => [ROOT . '/plugins/'],
 			'templates' => [APP . 'Template/'],
 		],
 	],
@@ -75,15 +75,6 @@ $config = [
 	],
 
 /**
- * The classname and database used in CakePHP's
- * access control lists.
- */
-	'Acl' => [
-		'database' => 'default',
-		'classname' => 'DbAcl',
-	],
-
-/**
  * Configure the cache adapters.
  */
 	'Cache' => [
@@ -100,7 +91,7 @@ $config = [
 			'prefix' => 'myapp_cake_core_',
 			'path' => CACHE . 'persistent/',
 			'serialize' => true,
-			'duration' => '+10 seconds',
+			'duration' => '+2 minutes',
 		],
 
 	/**
@@ -112,7 +103,7 @@ $config = [
 			'prefix' => 'my_app_cake_model_',
 			'path' => CACHE . 'models/',
 			'serialize' => true,
-			'duration' => '+10 seconds',
+			'duration' => '+2 minutes',
 		],
 	],
 
@@ -135,7 +126,7 @@ $config = [
  * - `log` - boolean - Whether or not you want exceptions logged.
  * - `exceptionRenderer` - string - The class responsible for rendering
  *   uncaught exceptions.  If you choose a custom class you should place
- *   the file for that class in app/Lib/Error. This class needs to implement a render method.
+ *   the file for that class in src/Lib/Error. This class needs to implement a render method.
  * - `skipLog` - array - List of exceptions to skip for logging. Exceptions that
  *   extend one of the listed exceptions will also be skipped for logging.
  *   Example: `'skipLog' => array('Cake\Error\NotFoundException', 'Cake\Error\UnauthorizedException')`
@@ -167,7 +158,7 @@ $config = [
  *  Debug  - Do not send the email, just return the result
  *
  * You can add custom transports (or override existing transports) by adding the
- * appropriate file to App/Network/Email.  Transports should be named 'YourTransport.php',
+ * appropriate file to src/Network/Email.  Transports should be named 'YourTransport.php',
  * where 'Your' is the name of the transport.
  *
  * ### Configuring delivery profiles
@@ -215,7 +206,27 @@ $config = [
 			'database' => 'my_app',
 			'prefix' => false,
 			'encoding' => 'utf8',
-			'timezone' => 'UTC'
+			'timezone' => 'UTC',
+			'cacheMetadata' => true,
+
+			/*
+			* Set identifier quoting to true if you are using reserved words or
+			* special characters in your table or column names. Enabling this
+			* setting will result in queries built using the Query Builder having
+			* identifiers quoted when creating SQL. It should be noted that this
+			* decreases performance because each query needs to be traversed and
+			* manipulated before being executed.
+			*/
+			'quoteIdentifiers' => false,
+
+			/*
+			* During development, if using MySQL < 5.6, uncommenting the
+			* following line could boost the speed at which schema metadata is
+			* fetched from the database. It can also be set directly with the
+			* mysql configuration directive 'innodb_stats_on_metadata = 0'
+			* which is the recommended value in production enviroments
+			*/
+			//'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
 		],
 
 		/**
@@ -231,7 +242,10 @@ $config = [
 			'database' => 'test_myapp',
 			'prefix' => false,
 			'encoding' => 'utf8',
-			'timezone' => 'UTC'
+			'timezone' => 'UTC',
+			'cacheMetadata' => true,
+			'quoteIdentifiers' => false,
+			//'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
 		],
 	],
 
@@ -263,19 +277,12 @@ $config = [
  *
  * - `cookie` - The name of the cookie to use. Defaults to 'CAKEPHP'
  * - `timeout` - The number of minutes you want sessions to live for. This timeout is handled by CakePHP
- * - `cookieTimeout` - The number of minutes you want session cookies to live for.
- * - `checkAgent` - Do you want the user agent to be checked when starting sessions? You might want to set the
  *    value to false, when dealing with older versions of IE, Chrome Frame or certain web-browsing devices and AJAX
  * - `defaults` - The default configuration set to use as a basis for your session.
  *    There are four builtins: php, cake, cache, database.
- * - `handler` - Can be used to enable a custom session handler.  Expects an array of of callables,
- *    that can be used with `session_save_handler`.  Using this option will automatically add `session.save_handler`
- *    to the ini array.
- * - `autoRegenerate` - Enabling this setting, turns on automatic renewal of sessions, and
- *    sessionids that change frequently.
- * - `requestCountdown` - Number of requests that can occur during a session time
- *    without the session being renewed. Only used when config value `autoRegenerate`
- *    is set to true. Default to 10.
+ * - `handler` - Can be used to enable a custom session handler. Expects an array with at least the `engine` key,
+ *    being the name of the Session engine class to use for managing the session. CakePHP bundles the `CacheSession`
+ *    and `DatabaseSession` engines.
  * - `ini` - An associative array of additional ini values to set.
  *
  * The built in defaults are:
@@ -285,34 +292,13 @@ $config = [
  * - 'database' - Uses CakePHP's database sessions.
  * - 'cache' - Use the Cache class to save sessions.
  *
- * To define a custom session handler, save it at /app/Network/Session/<name>.php.
- * Make sure the class implements PHP's `SessionHandlerInterface` and se
+ * To define a custom session handler, save it at src/Network/Session/<name>.php.
+ * Make sure the class implements PHP's `SessionHandlerInterface` and set
  * Session.handler to <name>
  *
- * To use database sessions, run the App/Config/Schema/sessions.php schema using
- * the cake shell command: cake schema create Sessions
+ * To use database sessions, load the SQL file located at src/Config/Schema/sessions.sql
  */
 	'Session' => [
 		'defaults' => 'php',
 	],
-
-/**
- * You can attach event listeners to the request lifecycle as Dispatcher Filter. By Default CakePHP bundles two filters:
- *
- * - AssetDispatcher filter will serve your asset files (css, images, js, etc) from your themes and plugins
- * - CacheDispatcher filter will read the Cache.check configure variable and try to serve cached content generated from controllers
- *
- * Feel free to remove or add filters as you see fit for your application. A few examples:
- *
- * Configure::write('Dispatcher.filters', [
- *   'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
- *   'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
- *   ['callable' => $aFunction, 'on' => 'before', 'priority' => 9], // A valid PHP callback type to be called on beforeDispatch
- *   ['callable' => $anotherMethod, 'on' => 'after'], // A valid PHP callback type to be called on afterDispatch
- * ]);
- */
-	'Dispatcher' => [
-		'filters' => ['AssetDispatcher', 'CacheDispatcher'],
-	],
-
 ];

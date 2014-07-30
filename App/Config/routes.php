@@ -4,9 +4,7 @@
  *
  * In this file, you set up routes to your controllers and their actions.
  * Routes are very important mechanism that allows you to freely connect
- * different urls to chosen controllers and their actions (functions).
- *
- * PHP 5
+ * different URLs to chosen controllers and their actions (functions).
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -25,36 +23,32 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Routing\Router;
 
+Router::parseExtensions('json');
+
+Router::scope('/', function($routes) {
 /**
- * Uncomment the define below to use CakePHP prefix routes.
- *
- * The value of the define determines the names of the routes
- * and their associated controller actions:
- *
- * Set to an array of prefixes you want to use in your application. Use for
- * admin or other prefixed routes.
- *
- * Routing.prefixes = array('admin', 'manager');
- *
- * Enables:
- *  `App\Controller\Admin` and `/admin/controller/index`
- *  `App\Controller\Manager` and `/manager/controller/index`
- *
+ * Here, we are connecting '/' (base path) to a controller called 'Pages',
+ * its action called 'display', and we pass a param to select the view file
+ * to use (in this case, src/Template/Pages/home.ctp)...
  */
-	Router::parseExtensions('json');
+	$routes->connect('/', ['controller' => 'questions', 'action' => 'index']);
 
-	// Configure::write('Routing.prefixes', array('admin'));
-
-	Router::connect('/', ['controller' => 'questions', 'action' => 'index']);
+/**
+ * Connect a route for the index action of any controller.
+ * And a more general catch all route for any action.
+ *
+ * The `fallbacks` method is a shortcut for
+ *    `$this->connect('/:controller', ['action' => 'index'], ['routeClass' => 'InflectedRoute']);`
+ *    `$this->connect('/:controller/:action/*', [], ['routeClass' => 'InflectedRoute']);`
+ *
+ * You can remove these routes once you've connected the
+ * routes you want in your application.
+ */
+	$routes->fallbacks();
+});
 
 /**
  * Load all plugin routes.  See the Plugin documentation on
  * how to customize the loading of plugin routes.
  */
 	Plugin::routes();
-
-/**
- * Load the CakePHP default routes. Only remove this if you do not want to use
- * the built-in default routes.
- */
-	require CAKE . 'Config/routes.php';
