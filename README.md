@@ -28,6 +28,6 @@ I have added a dump of the database for ease of use. You can find it in `db_dump
 * AJAX
 
 ## Todo
-* Upgrade to alpha-2
-** Refactor App to Src
-** Update `routes.php`
+* Upgrade to alpha-2  
+ * Refactor App to Src
+ * Update `routes.php`
