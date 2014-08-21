@@ -8,9 +8,12 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
+use App\Model\UserCommentsTrait;
 
 class QuestionsTable extends Table {
 
+	use UserCommentsTrait;
+	
 /**
  * Setup the table and relationships
  *
@@ -38,5 +41,24 @@ class QuestionsTable extends Table {
 		$question = $this->get($id);
 		$question->set('views', $question->views + 1);
 		return (bool)$this->save($question);
+	}
+	
+/**
+ * Find users and their comments ordered by created
+ * 
+ * @param \Cake\ORM\Query $query
+ * @return Query
+ */
+	public function findUserCommentsByCreated(Query $query) {
+		return $query
+			->contain(['Users' => [
+					'fields' => ['id', 'name']
+				]
+			])
+			->contain(['Comments' => function($q) {
+				return $q
+					->contain(['Users' => ['fields' => ['id', 'name']]])
+					->order(['Comments.created' => 'ASC']);
+			}]);
 	}
 }
