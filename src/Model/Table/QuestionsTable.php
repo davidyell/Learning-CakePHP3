@@ -8,6 +8,7 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
+use Cake\ORM\Query;
 
 class QuestionsTable extends Table {
 
@@ -38,5 +39,18 @@ class QuestionsTable extends Table {
 		$question = $this->get($id);
 		$question->set('views', $question->views + 1);
 		return (bool)$this->save($question);
+	}
+	
+	public function findUserCommentsByCreated(Query $query) {
+		return $query
+			->contain(['Users' => [
+					'fields' => ['id', 'name']
+				]
+			])
+			->contain(['Comments' => function($q) {
+				return $q
+					->contain(['Users' => ['fields' => ['id', 'name']]])
+					->order(['Comments.created' => 'ASC']);
+			}]);
 	}
 }
