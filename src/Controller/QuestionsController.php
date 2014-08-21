@@ -35,30 +35,6 @@ class QuestionsController extends AppController {
 		if (!$id) {
 			throw new NotFoundException(__('Question not found'));
 		}
-
-//		$question = $this->Questions->find()
-//			->contain([
-//				'Users',
-//				'Comments' => function($q) {
-//					return $q
-//						->contain(['Users' => ['fields' => ['id', 'name']]])
-//						->order(['Comments.created' => 'ASC']);
-//				},
-//				'Answers' => function($q) {
-//					return $q
-//						->contain([
-//							'Users' => ['fields' => ['id', 'name']],
-//							'Comments' => function($q) {
-//								return $q
-//									->contain(['Users' => ['fields' => ['id', 'name']]])
-//									->order(['Comments.created' => 'ASC']);
-//							}
-//						])
-//						->order(['Answers.upvotes - Answers.downvotes' => 'DESC', 'Answers.created' => 'DESC']);
-//				}
-//			])
-//			->where(['Questions.id' => $id])
-//			->first();
 			
 		$question = $this->Questions->find()
 			->contain('Users')
