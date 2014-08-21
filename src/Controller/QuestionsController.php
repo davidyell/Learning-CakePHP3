@@ -64,7 +64,7 @@ class QuestionsController extends AppController {
 			->contain('Users')
 			->find('userCommentsByCreated')
 			->contain(['Answers' => function($q) {
-				return $q->find('userCommentsByCreated'); // Not known in Answers
+				return $q->find('userCommentsByCreated');
 			}])
 			->where(['Questions.id' => $id])
 			->first();

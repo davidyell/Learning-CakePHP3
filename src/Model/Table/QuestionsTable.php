@@ -8,10 +8,12 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
-use Cake\ORM\Query;
+use App\Model\UserCommentsTrait;
 
 class QuestionsTable extends Table {
 
+	use UserCommentsTrait;
+	
 /**
  * Setup the table and relationships
  *
@@ -41,6 +43,12 @@ class QuestionsTable extends Table {
 		return (bool)$this->save($question);
 	}
 	
+/**
+ * Find users and their comments ordered by created
+ * 
+ * @param \Cake\ORM\Query $query
+ * @return Query
+ */
 	public function findUserCommentsByCreated(Query $query) {
 		return $query
 			->contain(['Users' => [

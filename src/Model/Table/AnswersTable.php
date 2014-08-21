@@ -8,8 +8,11 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
+use App\Model\UserCommentsTrait;
 
 class AnswersTable extends Table {
+	
+	use UserCommentsTrait;
 
 /**
  * Setup the table and relationships
