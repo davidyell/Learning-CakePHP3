@@ -61,7 +61,7 @@ class QuestionsController extends AppController {
 			$question = $this->Questions->newEntity($this->request->data);
 			if ($savedQuestion = $this->Questions->save($question)) {
 				$this->Session->setFlash(__('Question has been saved'), 'flash', ['class' => 'success']);
-				return $this->redirect(['controller' => 'question', 'action' => 'view', $savedQuestion->id]);
+				return $this->redirect(['controller' => 'questions', 'action' => 'view', $savedQuestion->id]);
 			} else {
 				$this->Session->setFlash(__('Question could not be saved'), 'flash', ['class' => 'error']);
 			}
