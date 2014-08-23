@@ -60,8 +60,9 @@ class UsersController extends AppController {
  */
 	public function view($id) {
 		$user = $this->Users->find()
-			->contain(['Questions', 'Answers', 'Comments'])
-			->where(['Users.id' => $id]);
+			->contain(['Questions', 'Answers'])
+			->where(['Users.id' => $id])
+			->first();
 		
 		$this->set('user', $user);
 	}
