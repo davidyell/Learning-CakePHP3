@@ -7,7 +7,8 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "jquery": "2.1.1"
+    "jquery": "2.1.1",
+    "bootstrap": "3.2.0"
   },
   "devDependencies": {
     
