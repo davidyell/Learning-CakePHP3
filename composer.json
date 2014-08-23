@@ -1,7 +1,7 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "name": "davidyell/learning-cakephp3",
+    "description": "Learning CakePHP 3",
+    "homepage": "https://github.com/davidyell/Learning-CakePHP3",
     "type": "project",
     "license": "MIT",
     "require": {
