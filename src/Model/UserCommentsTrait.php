@@ -2,6 +2,7 @@
 namespace App\Model;
 
 use Cake\ORM\Query;
+use App\Model\Table;
 
 /**
  * Description of UserCommentsTrait
