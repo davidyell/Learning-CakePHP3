@@ -8,7 +8,6 @@
 namespace App\Controller;
 
 use Cake\Error\NotFoundException;
-use Cake\ORM\Entity;
 
 class CommentsController extends AppController {
 
