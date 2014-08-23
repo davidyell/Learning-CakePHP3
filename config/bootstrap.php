@@ -12,7 +12,6 @@
  * @since         0.10.8
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Config;
 
 /**
  * Configure paths required to find CakePHP + general filepath
@@ -21,7 +20,7 @@ namespace App\Config;
 require __DIR__ . '/paths.php';
 
 // Use composer to load the autoloader.
-require ROOT . '/vendor/autoload.php';
+require ROOT . DS . 'vendor' . DS . 'autoload.php';
 
 /**
  * Bootstrap CakePHP.
@@ -32,7 +31,7 @@ require ROOT . '/vendor/autoload.php';
  * - Registering the CakePHP autoloader.
  * - Setting the default application paths.
  */
-require CAKE . 'bootstrap.php';
+require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
 use Cake\Cache\Cache;
 use Cake\Configure\Engine\PhpConfig;
@@ -60,7 +59,7 @@ try {
 	Configure::config('default', new PhpConfig());
 	Configure::load('app.php', 'default', false);
 } catch (\Exception $e) {
-	die('Unable to load Config/app.php. Create it by copying Config/app.default.php to Config/app.php.');
+	die('Unable to load config/app.php. Create it by copying config/app.default.php to config/app.php.');
 }
 
 // Load an environment local configuration file.
@@ -86,6 +85,12 @@ date_default_timezone_set('UTC');
  * Configure the mbstring extension to use the correct encoding.
  */
 mb_internal_encoding(Configure::read('App.encoding'));
+
+/**
+ * Set the default locale. This controls how dates, number and currency is
+ * formatted and sets the default language to use for translations.
+ */
+ini_set('intl.default_locale', 'en_US');
 
 /**
  * Register application error and exception handlers.

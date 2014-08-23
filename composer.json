@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"require": {
 		"php": ">=5.4.19",
-		"cakephp/cakephp": "3.0.0-alpha2",
+		"cakephp/cakephp": "3.0.0-beta1",
 		"mobiledetect/mobiledetectlib": "2.*"
 	},
 	"require-dev": {

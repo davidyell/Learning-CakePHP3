@@ -4,23 +4,129 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5ce56e24315318e3751cf825034b6564",
+    "hash": "05cf79b2bb72d85f2ad4f3549cf3a248",
     "packages": [
         {
-            "name": "cakephp/cakephp",
-            "version": "3.0.0-alpha2",
+            "name": "aura/installer-default",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "9054d6414a1d767b4742728319447f625b2e31fb"
+                "url": "https://github.com/auraphp/installer-default.git",
+                "reference": "52f8de3670cc1ef45a916f40f732937436d028c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/9054d6414a1d767b4742728319447f625b2e31fb",
-                "reference": "9054d6414a1d767b4742728319447f625b2e31fb",
+                "url": "https://api.github.com/repos/auraphp/installer-default/zipball/52f8de3670cc1ef45a916f40f732937436d028c8",
+                "reference": "52f8de3670cc1ef45a916f40f732937436d028c8",
+                "shasum": ""
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Aura\\Composer\\DefaultInstaller"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Aura\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul M. Jones",
+                    "email": "pmjones88@gmail.com",
+                    "homepage": "http://paul-m-jones.com"
+                }
+            ],
+            "description": "Installs Aura packages using the Composer defaults.",
+            "keywords": [
+                "aura",
+                "installer"
+            ],
+            "time": "2012-11-26 21:35:57"
+        },
+        {
+            "name": "aura/intl",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Intl.git",
+                "reference": "e6c84d52ae8749f5a346918f20d9027353f1f5bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.Intl/zipball/e6c84d52ae8749f5a346918f20d9027353f1f5bc",
+                "reference": "e6c84d52ae8749f5a346918f20d9027353f1f5bc",
                 "shasum": ""
             },
             "require": {
+                "aura/installer-default": "1.0.*",
+                "php": ">=5.4.0"
+            },
+            "type": "aura-package",
+            "autoload": {
+                "psr-0": {
+                    "Aura\\Intl": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul M. Jones",
+                    "email": "pmjones88@gmail.com",
+                    "homepage": "http://paul-m-jones.com"
+                },
+                {
+                    "name": "Aura.Intl Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Intl/contributors"
+                },
+                {
+                    "name": "Pascal Borreli",
+                    "email": "pascal@borreli.com"
+                },
+                {
+                    "name": "Mapthegod",
+                    "email": "mapthegod@gmail.com"
+                },
+                {
+                    "name": "José Lorenzo Rodríguez",
+                    "email": "jose.zap@gmail.com"
+                }
+            ],
+            "description": "The Aura.Intl package provides internationalization (I18N) tools, specifically\npackage-oriented per-locale message translation.",
+            "homepage": "http://auraphp.com/Aura.Intl",
+            "keywords": [
+                "g11n",
+                "globalization",
+                "i18n",
+                "internationalization",
+                "intl",
+                "l10n",
+                "localization"
+            ],
+            "time": "2014-07-29 00:00:00"
+        },
+        {
+            "name": "cakephp/cakephp",
+            "version": "3.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/cakephp.git",
+                "reference": "ec65de0dd51e82a375157505b236758807e4da5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/ec65de0dd51e82a375157505b236758807e4da5d",
+                "reference": "ec65de0dd51e82a375157505b236758807e4da5d",
+                "shasum": ""
+            },
+            "require": {
+                "aura/intl": "1.1.*",
                 "ext-intl": "*",
                 "ext-mbstring": "*",
                 "ext-mcrypt": "*",
@@ -34,8 +140,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Cake\\": "src",
-                    "Cake\\Test\\": "tests"
+                    "Cake\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -53,7 +158,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-07-28 02:30:49"
+            "time": "2014-08-23 09:25:45"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -270,12 +375,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "a96ee4fc3ea3915d9352e55b6d6ab18a2c893726"
+                "reference": "5219dd9423b5b64c7cc6abe34292e0d2daee8382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/a96ee4fc3ea3915d9352e55b6d6ab18a2c893726",
-                "reference": "a96ee4fc3ea3915d9352e55b6d6ab18a2c893726",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5219dd9423b5b64c7cc6abe34292e0d2daee8382",
+                "reference": "5219dd9423b5b64c7cc6abe34292e0d2daee8382",
                 "shasum": ""
             },
             "require": {
@@ -337,13 +442,13 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2014-07-29 23:16:25"
+            "time": "2014-08-14 04:45:33"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cakephp/cakephp": 15,
+        "cakephp/cakephp": 10,
         "squizlabs/php_codesniffer": 20,
         "cakephp/cakephp-codesniffer": 20
     },

@@ -1,12 +1,12 @@
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @since         3.0.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -26,12 +26,12 @@ define('DS', DIRECTORY_SEPARATOR);
 /**
  * The full path to the directory which holds "App", WITHOUT a trailing DS.
  */
-define('ROOT', dirname(dirname(__DIR__)));
+define('ROOT', dirname(__DIR__));
 
 /**
  * The actual directory name for the "App".
  */
-define('APP_DIR', basename(dirname(__DIR__)));
+define('APP_DIR', 'src');
 
 /**
  * The name of the webroot dir.  Defaults to 'webroot'
@@ -44,6 +44,11 @@ define('WEBROOT_DIR', 'webroot');
 define('APP', ROOT . DS . APP_DIR . DS);
 
 /**
+ * Path to the config directory.
+ */
+define('CONFIG', ROOT . DS . 'config' . DS);
+
+/**
  * File path to the webroot directory.
  */
 define('WWW_ROOT', ROOT . DS . WEBROOT_DIR . DS);
@@ -51,7 +56,7 @@ define('WWW_ROOT', ROOT . DS . WEBROOT_DIR . DS);
 /**
  * Path to the tests directory.
  */
-define('TESTS', ROOT . DS . 'Test' . DS);
+define('TESTS', ROOT . DS . 'tests' . DS);
 
 /**
  * Path to the temporary files directory.
@@ -61,7 +66,7 @@ define('TMP', ROOT . DS . 'tmp' . DS);
 /**
  * Path to the logs directory.
  */
-define('LOGS', TMP . 'logs' . DS);
+define('LOGS', ROOT . DS . 'logs' . DS);
 
 /**
  * Path to the cache files directory. It can be shared between hosts in a multi-server setup.
