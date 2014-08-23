@@ -14,14 +14,14 @@
 		echo $this->fetch('meta');
 		
 		echo $this->Html->css([
-			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', 
-			'//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css',
-			'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
+			'../vendor/bootstrap/dist/css/bootstrap.min.css', 
+			'../vendor/bootstrap/dist/css/bootstrap-theme.min.css',
+			'../vendor/jqueryui/themes/smoothness/jquery-ui.min.css',
 			'style'
 		]);
 		echo $this->fetch('css');
 		
-		echo $this->Html->script('vendor/modernizr-2.6.2.min');
+		echo $this->Html->script('../vendor/modernizr/modernizr');
 		?>
     </head>
     <body>
@@ -69,10 +69,6 @@
 			<p>You must be logged in</p>
 			<p><?php echo $this->Html->link('Login', ['controller' => 'users', 'action' => 'login'], ['class' => 'btn btn-success']);?></p>
 		</div>
-		
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 		
 		<?php
 		echo $this->Html->script(['plugins', 'common']);
