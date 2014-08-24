@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "c3fb9383b58056609a84be1e70b6098d9283df9a"
+                "reference": "b4d392d685e4a18d67b9acae78333c71907b6f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/c3fb9383b58056609a84be1e70b6098d9283df9a",
-                "reference": "c3fb9383b58056609a84be1e70b6098d9283df9a",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/b4d392d685e4a18d67b9acae78333c71907b6f75",
+                "reference": "b4d392d685e4a18d67b9acae78333c71907b6f75",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
             },
             "type": "cakephp-plugin",
             "extra": {
-                "installer-name": "DebugKit/Test/Fixture"
+                "installer-name": "DebugKit"
             },
             "autoload": {
                 "psr-4": {
@@ -214,20 +214,20 @@
                 "debug",
                 "kit"
             ],
-            "time": "2014-08-23 10:46:00"
+            "time": "2014-08-24 07:49:19"
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.17",
+            "version": "v1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "f22820dd0854a406f86e2fc29b81c1898d68e5fb"
+                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/f22820dd0854a406f86e2fc29b81c1898d68e5fb",
-                "reference": "f22820dd0854a406f86e2fc29b81c1898d68e5fb",
+                "url": "https://api.github.com/repos/composer/installers/zipball/74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
+                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
                 "shasum": ""
             },
             "replace": {
@@ -304,7 +304,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-08-17 18:19:30"
+            "time": "2014-08-18 20:00:12"
         },
         {
             "name": "ircmaxell/password-compat",
