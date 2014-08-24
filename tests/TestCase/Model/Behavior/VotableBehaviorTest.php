@@ -7,9 +7,9 @@
 
 namespace Test\TestCase\Model\Behavior;
 
-use App\Model\Behavior\VotableBehavior;
 use Cake\Datasource\ConnectionManager;
 use Cake\TestSuite\TestCase;
+use Cake\ORM\TableRegistry;
 
 class VotableBehaviorTest extends TestCase {
 
