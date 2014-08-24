@@ -72,10 +72,22 @@ class QuestionsController extends AppController {
 		}
 	}
 	
+/**
+ * Allow a user to edit one of their questions
+ * 
+ * @param int $id
+ * @return void
+ * @throws NotFoundException
+ */
 	public function edit($id) {
 		$question = $this->Questions->find()
-			->where(['id' => $id])
+			->contain('Users')
+			->where(['Questions.id' => $id])
 			->first();
+		
+		if ($this->Auth->user('id') != $question->user->id) {
+			throw new NotFoundException('Question not found');
+		}
 		
 		if ($this->request->is(['put', 'post'])) {
 			$question = $this->Questions->patchEntity($question, $this->request->data);
