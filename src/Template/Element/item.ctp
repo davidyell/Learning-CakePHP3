@@ -10,6 +10,10 @@
 	<div class="meta">
 		<?php echo $this->Html->link($data->user->name, ['controller' => 'users', 'action' => 'view', $data->user->id]);?> on 
 		<?php echo $this->Time->nice($data->created); ?>
+		
+		<?php
+		echo $this->Html->link('Edit', ['controller' => 'questions', 'action' => 'edit', $data->id], ['class' => 'btn btn-xs btn-primary']);
+		?>
 	</div>
 	<div class="clearfix"><!--blank--></div>
 	

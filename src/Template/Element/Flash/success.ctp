@@ -1,0 +1,1 @@
+<div class="message alert alert-success"><?= h($message) ?></div>
