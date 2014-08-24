@@ -32,10 +32,10 @@ class CommentsController extends AppController {
 		if ($this->request->is('post')) {
 			$comment = $this->Comments->newEntity($this->request->data);
 			if ($this->Comments->save($comment)) {
-				$this->Session->setFlash(__('Comment has been saved'), 'flash', ['class' => 'success']);
+				$this->Flash->success('Comment has been saved');
 				return $this->redirect(['controller' => 'questions', 'action' => 'index']);
 			} else {
-				$this->Session->setFlash(__('Comment could not be saved'), 'flash', ['class' => 'error']);
+				$this->Flash->error('Comment could not be saved');
 			}
 		}
 	}

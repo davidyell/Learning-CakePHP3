@@ -24,9 +24,9 @@ class AnswersController extends AppController {
 		if ($this->request->is('post')) {
 			$answer = $this->Answers->newEntity($this->request->data);
 			if ($this->Answers->save($answer)) {
-				$this->Session->setFlash(__('Answer has been saved'), 'flash', ['class' => 'success']);
+				$this->Flash->success('Answer has been saved');
 			} else {
-				$this->Session->setFlash(__('Answer could not be saved'), 'flash', ['class' => 'error']);
+				$this->Flash->error('Answer could not be saved');
 			}
 		}
 
@@ -48,9 +48,9 @@ class AnswersController extends AppController {
 			$this->set('_serialize', ['votes']);
 		} else {
 			if ($votes !== false) {
-				$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+				$this->Flash->success('Vote registered');
 			} else {
-				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+				$this->Flash->error('Could not save vote');
 			}
 
 			return $this->redirect(['controller' => 'questions', 'action' => 'index']);

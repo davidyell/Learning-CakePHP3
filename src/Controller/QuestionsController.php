@@ -60,12 +60,30 @@ class QuestionsController extends AppController {
 		if ($this->request->is('post')) {
 			$question = $this->Questions->newEntity($this->request->data);
 			if ($savedQuestion = $this->Questions->save($question)) {
-				$this->Session->setFlash(__('Question has been saved'), 'flash', ['class' => 'success']);
+				$this->Flash->success('Question has been saved');
 				return $this->redirect(['controller' => 'questions', 'action' => 'view', $savedQuestion->id]);
 			} else {
-				$this->Session->setFlash(__('Question could not be saved'), 'flash', ['class' => 'error']);
+				$this->Flash->error('Question could not be saved');
 			}
 		}
+	}
+	
+	public function edit($id) {
+		$question = $this->Questions->find()
+			->where(['id' => $id])
+			->first();
+		
+		if ($this->request->is(['put', 'post'])) {
+			$question = $this->Questions->patchEntity($question, $this->request->data);
+			if ($this->Questions->save($question)) {
+				$this->Flash->success('Question has been updated');
+				return $this->redirect(['action' => 'view', $question->id]);
+			} else {
+				$this->Flash->error('Question cannot be updated');
+			}
+		}
+		
+		$this->request->data = $question->toArray();
 	}
 
 /**
@@ -83,9 +101,9 @@ class QuestionsController extends AppController {
 			$this->set('_serialize', ['votes']);
 		} else {
 			if ($votes !== false) {
-				$this->Session->setFlash('Vote registered', 'flash', ['class' => 'success']);
+				$this->Flash->success('Vote registered');
 			} else {
-				$this->Session->setFlash('Could not save vote', 'flash', ['class' => 'error']);
+				$this->Flash->error('Could not save vote');
 			}
 
 			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
