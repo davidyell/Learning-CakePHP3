@@ -51,10 +51,6 @@ class QuestionsController extends AppController {
 		
 		$this->set('question', $question);
 		
-		if ($this->Auth->user('id') == $question->user->id) {
-			$this->set('owned', true);
-		}
-
 		$this->Questions->addView($id);
 	}
 
