@@ -10,6 +10,10 @@ namespace App\Controller;
 use Cake\Error\NotFoundException;
 
 class QuestionsController extends AppController {
+	
+	public $components = [
+		'Vote'
+	];
 
 /**
  * List all the questions
@@ -101,28 +105,15 @@ class QuestionsController extends AppController {
 		
 		$this->request->data = $question->toArray();
 	}
-
+	
 /**
- * Vote a question up or down
- *
- * @param string $dir The type of vote
- * @param int $id The id of the item being voted on
- * @return redirect
+ * Wrapper method for the Vote component
+ * 
+ * @param string $dir
+ * @param int $id
+ * @return void
  */
 	public function vote($dir, $id) {
-		$votes = $this->Questions->vote($dir, $id);
-
-		if ($this->request->is('ajax')) {
-			$this->set('votes', $votes);
-			$this->set('_serialize', ['votes']);
-		} else {
-			if ($votes !== false) {
-				$this->Flash->success('Vote registered');
-			} else {
-				$this->Flash->error('Could not save vote');
-			}
-
-			return $this->redirect(['controller' => 'questions', 'action' => 'index']);
-		}
+		$this->Vote->vote($dir, $id);
 	}
 }
