@@ -71,7 +71,12 @@
 		</div>
 		
 		<?php
-		echo $this->Html->script(['plugins', 'common']);
+		echo $this->Html->script([
+			'../vendor/jquery/dist/jquery.min',
+			'../vendor/jqueryui/jquery-ui.min',
+			'plugins', 
+			'common'
+		]);
 		echo $this->fetch('script');
 		?>
     </body>
