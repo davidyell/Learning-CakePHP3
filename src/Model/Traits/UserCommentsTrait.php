@@ -5,10 +5,9 @@
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace App\Model;
+namespace App\Model\Traits;
 
 use Cake\ORM\Query;
-use App\Model\Table;
 
 trait UserCommentsTrait {
 	

@@ -7,17 +7,10 @@
 
 namespace App\Model\Entity;
 
+use App\Model\Traits\VoteTrait;
 use Cake\ORM\Entity;
 
 class Answer extends Entity {
-
-/**
- * Get the total number of votes
- * 
- * @return int
- */
-	public function getVotes() {
-		return $this->upvotes - $this->downvotes;
-	}
-
+	
+	use VoteTrait;
 }

@@ -7,8 +7,8 @@
 
 namespace App\Model\Table;
 
+use App\Model\Traits\UserCommentsTrait;
 use Cake\ORM\Table;
-use App\Model\UserCommentsTrait;
 
 class QuestionsTable extends Table {
 
