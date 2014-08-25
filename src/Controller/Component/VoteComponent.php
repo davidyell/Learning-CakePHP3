@@ -1,4 +1,10 @@
 <?php
+/**
+ * Description of VoteComponent
+ *
+ * @author David Yell <neon1024@gmail.com>
+ */
+
 namespace App\Controller\Component;
 
 use Cake\Controller\Component;
@@ -6,12 +12,6 @@ use Cake\Event\Event;
 use Cake\ORM\Error\MissingBehaviorException;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
-
-/**
- * Description of VoteComponent
- *
- * @author David Yell <neon1024@gmail.com>
- */
 
 class VoteComponent extends Component {
 

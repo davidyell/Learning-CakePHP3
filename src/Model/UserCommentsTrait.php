@@ -1,14 +1,15 @@
 <?php
-namespace App\Model;
-
-use Cake\ORM\Query;
-use App\Model\Table;
-
 /**
  * Description of UserCommentsTrait
  *
  * @author David Yell <neon1024@gmail.com>
  */
+
+namespace App\Model;
+
+use Cake\ORM\Query;
+use App\Model\Table;
+
 trait UserCommentsTrait {
 	
 /**

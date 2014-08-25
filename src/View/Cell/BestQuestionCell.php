@@ -1,13 +1,13 @@
 <?php
-namespace App\View\Cell;
-
-use Cake\View\Cell;
-
 /**
  * BestQuestionCell
  *
  * @author David Yell <neon1024@gmail.com>
  */
+
+namespace App\View\Cell;
+
+use Cake\View\Cell;
 
 class BestQuestionCell extends Cell {
 
