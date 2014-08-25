@@ -14,10 +14,14 @@
 	<div class="your-answer">
 		<h3>Your answer</h3>
 		<?php
-		echo $this->Form->create('Answers', ['url' => ['controller' => 'answers', 'action' => 'add', $question->id]]);
-		echo $this->Form->input('Answers.answer', ['type' => 'textarea', 'label' => false]);
-		echo $this->Form->submit('Post answer', ['class' => 'btn btn-success']);
-		echo $this->Form->end();
+		if ($this->Session->read('Auth.User.id')) {
+			echo $this->Form->create('Answers', ['url' => ['controller' => 'answers', 'action' => 'add', $question->id]]);
+			echo $this->Form->input('Answers.answer', ['type' => 'textarea', 'label' => false]);
+			echo $this->Form->submit('Post answer', ['class' => 'btn btn-success']);
+			echo $this->Form->end();
+		} else {
+			?><p>Please <?php echo $this->Html->link('login', ['controller' => 'users', 'action' => 'login']);?> to post your answer.</p><?php
+		}
 		?>
 	</div>
 </div>
