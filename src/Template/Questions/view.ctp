@@ -15,8 +15,9 @@
 		<h3>Your answer</h3>
 		<?php
 		if ($this->Session->read('Auth.User.id')) {
-			echo $this->Form->create('Answers', ['url' => ['controller' => 'answers', 'action' => 'add', $question->id]]);
+			echo $this->Form->create('Answers', ['url' => ['controller' => 'answers', 'action' => 'add']]);
 			echo $this->Form->input('Answers.answer', ['type' => 'textarea', 'label' => false]);
+			echo $this->Form->input('Answers.question_id', ['type' => 'hidden', 'value' => $question->id]);
 			echo $this->Form->submit('Post answer', ['class' => 'btn btn-success']);
 			echo $this->Form->end();
 		} else {
