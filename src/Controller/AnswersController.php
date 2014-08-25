@@ -19,8 +19,7 @@ class AnswersController extends AppController {
  * @param int $id Question id to which the answer is added
  * @return void
  */
-	public function add($id) {
-		$this->request->data['Answers']['question_id'] = $id;
+	public function add() {
 		$this->request->data['Answers']['user_id'] = $this->Auth->user('id');
 
 		if ($this->request->is('post')) {
@@ -32,7 +31,7 @@ class AnswersController extends AppController {
 			}
 		}
 
-		return $this->redirect(['controller' => 'questions', 'action' => 'view', $id]);
+		return $this->redirect(['controller' => 'questions', 'action' => 'view', $this->request->data['Answers']['question_id']]);
 	}
 
 /**
