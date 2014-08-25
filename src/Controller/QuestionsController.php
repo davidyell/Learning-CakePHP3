@@ -46,7 +46,7 @@ class QuestionsController extends AppController {
 			->contain(['Answers' => function($q) {
 				return $q
 						->order([
-							// TODO: This should be a virtual field
+							// TODO: Refactor to order by computed field when available
 							'Answers.upvotes - Answers.downvotes DESC',
 							'Answers.modified ASC'
 						])
@@ -54,7 +54,7 @@ class QuestionsController extends AppController {
 			}])
 			->where(['Questions.id' => $id])
 			->first();
-		
+			
 		$this->set('question', $question);
 		
 		$this->Questions->addView($id);
