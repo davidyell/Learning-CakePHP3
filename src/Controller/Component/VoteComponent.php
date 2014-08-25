@@ -29,7 +29,7 @@ class VoteComponent extends Component {
 		$this->Controller = $event->subject();
 		$this->Table = TableRegistry::get($this->Controller->name);
 	}
-
+			
 /**
  * Vote an item up or down
  * 
