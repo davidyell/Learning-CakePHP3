@@ -28,5 +28,26 @@ $(function() {
     $('.dialog span.glyphicon.glyphicon-remove').click(function() {
         $(this).parent().fadeOut();
     });
+    
+// Ajax comments
+    $('a.add-comment').click(function (e) {
+        e.preventDefault();
+        $(this).parents('div.comment').find('div.add-comment-form').show();
+    });
+    
+    $('form.ajax-comment-form').submit(function (e) {
+       e.preventDefault();
+       var form = $(this);
+       $.ajax($(form).attr('action') + '.json', {
+           data: $(form).serialize(),
+           method: 'post',
+           success: function (data, status) {
+               $(form).hide();
+               $(form).find('input').val(null);
+               var comment = "<div class='comment'><p>" + data.comment.comment + "</p></div>";
+               $(form).parents('div.comment').before(comment);
+           }
+       });
+    });
 
 });

@@ -13,4 +13,5 @@ use Cake\ORM\Entity;
 class Question extends Entity {
 
 	use VoteTrait;
+	
 }

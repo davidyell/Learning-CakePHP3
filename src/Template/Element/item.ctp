@@ -30,7 +30,16 @@
 		<?php endif;?>
 		
 		<div class="comment">
-			<p><?php echo $this->Html->link('Add comment', ['controller' => 'comments', 'action' => 'add', $type, $data->id]);?></p>
+			<p><?php echo $this->Html->link('Add comment', ['controller' => 'comments', 'action' => 'add', $type, $data->id], ['class' => 'add-comment']);?></p>
+			
+			<div class="add-comment-form" style="display:none">
+				<?php
+				echo $this->Form->create('Comments', ['url' => ['controller' => 'comments', 'action' => 'add', $type, $data->id], 'class' => 'ajax-comment-form']);
+				echo $this->Form->input('comment', ['label' => false, 'id' => 'comment-' . $data->id]);
+				echo $this->Form->submit('Save', ['class' => 'btn btn-sm btn-primary']);
+				echo $this->Form->end();
+				?>
+			</div>
 		</div>
 	</div>
 	

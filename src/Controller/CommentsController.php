@@ -10,7 +10,7 @@ namespace App\Controller;
 use Cake\Error\NotFoundException;
 
 class CommentsController extends AppController {
-
+	
 /**
  * Add a comment to a question or an answer
  * 
@@ -32,8 +32,13 @@ class CommentsController extends AppController {
 		if ($this->request->is('post')) {
 			$comment = $this->Comments->newEntity($this->request->data);
 			if ($this->Comments->save($comment)) {
-				$this->Flash->success('Comment has been saved');
-				return $this->redirect(['controller' => 'questions', 'action' => 'index']);
+				if ($this->request->is('ajax')) {
+					$this->set('comment', $comment);
+					$this->set('_serialize', ['comment']);
+				} else {
+					$this->Flash->success('Comment has been saved');
+					return $this->redirect(['controller' => 'questions', 'action' => 'index']);
+				}
 			} else {
 				$this->Flash->error('Comment could not be saved');
 			}
