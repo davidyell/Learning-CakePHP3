@@ -12,7 +12,7 @@
 		<?php echo $this->Time->nice($data->created); ?>
 		
 		<?php
-		if ($this->Session->read('Auth.User.id') == $data->user->id) {
+		if ($this->Session->read('Auth.User.id') == $data->user->id && isset($data->question)) {
 			echo $this->Html->link('Edit', ['controller' => 'questions', 'action' => 'edit', $data->id], ['class' => 'btn btn-xs btn-primary']);
 		}
 		?>
