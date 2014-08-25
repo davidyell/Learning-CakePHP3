@@ -44,7 +44,13 @@ class QuestionsController extends AppController {
 			->contain('Users')
 			->find('userCommentsByCreated')
 			->contain(['Answers' => function($q) {
-				return $q->find('userCommentsByCreated');
+				return $q
+						->order([
+							// TODO: This should be a virtual field
+							'Answers.upvotes - Answers.downvotes DESC',
+							'Answers.modified ASC'
+						])
+						->find('userCommentsByCreated');
 			}])
 			->where(['Questions.id' => $id])
 			->first();
