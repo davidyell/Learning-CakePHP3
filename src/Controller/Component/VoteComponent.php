@@ -16,33 +16,35 @@ use Cake\ORM\TableRegistry;
 class VoteComponent extends Component {
 
 	public $Controller;
+
 	public $Table;
-	
+
 	public $components = ['Flash'];
-	
+
 /**
  * Startup
  * 
- * @param \Cake\Event\Event $event
+ * @param \Cake\Event\Event $event The passed event
+ * @return void
  */
 	public function startup(Event $event) {
 		$this->Controller = $event->subject();
 		$this->Table = TableRegistry::get($this->Controller->name);
 	}
-			
+
 /**
  * Vote an item up or down
- * 
- * @param Table $table The table to vote on
- * @param string $dir Direction of vote, up or down.
- * @param int $id
- * @return redirect
+ *
+ * @param string $dir Which way the vote is
+ * @param int $id The id of the item being voted upon
+ * @return void
+ * @throws Cake\ORM\Error\MissingBehaviorException
  */
 	public function vote($dir, $id) {
 		if (!$this->Table->hasBehavior('Votable')) {
 			throw new MissingBehaviorException('Votable behaviour not attached');
 		}
-		
+
 		$votes = $this->Table->vote($dir, $id);
 
 		if ($this->Controller->request->is('ajax')) {
@@ -58,5 +60,4 @@ class VoteComponent extends Component {
 			return $this->Controller->redirect(['controller' => $this->Controller->name, 'action' => 'index']);
 		}
 	}
-	
 }

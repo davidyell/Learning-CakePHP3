@@ -10,7 +10,7 @@ namespace App\Controller;
 use Cake\Error\NotFoundException;
 
 class QuestionsController extends AppController {
-	
+
 	public $components = [
 		'Vote'
 	];
@@ -39,7 +39,7 @@ class QuestionsController extends AppController {
 		if (!$id) {
 			throw new NotFoundException(__('Question not found'));
 		}
-			
+
 		$question = $this->Questions->find()
 			->contain('Users')
 			->find('userCommentsByCreated')
@@ -54,9 +54,9 @@ class QuestionsController extends AppController {
 			}])
 			->where(['Questions.id' => $id])
 			->first();
-			
+
 		$this->set('question', $question);
-		
+
 		$this->Questions->addView($id);
 	}
 
@@ -77,24 +77,24 @@ class QuestionsController extends AppController {
 			}
 		}
 	}
-	
+
 /**
  * Allow a user to edit one of their questions
  * 
- * @param int $id
+ * @param int $id The id of the question
  * @return void
- * @throws NotFoundException
+ * @throws Cake\Error\NotFoundException
  */
 	public function edit($id) {
 		$question = $this->Questions->find()
 			->contain('Users')
 			->where(['Questions.id' => $id])
 			->first();
-		
+
 		if ($this->Auth->user('id') != $question->user->id) {
 			throw new NotFoundException('Question not found');
 		}
-		
+
 		if ($this->request->is(['put', 'post'])) {
 			$question = $this->Questions->patchEntity($question, $this->request->data);
 			if ($this->Questions->save($question)) {
@@ -104,15 +104,15 @@ class QuestionsController extends AppController {
 				$this->Flash->error('Question cannot be updated');
 			}
 		}
-		
+
 		$this->request->data = $question->toArray();
 	}
-	
+
 /**
  * Wrapper method for the Vote component
  * 
- * @param string $dir
- * @param int $id
+ * @param string $dir The direction of the vote
+ * @param int $id The id of the question
  * @return void
  */
 	public function vote($dir, $id) {

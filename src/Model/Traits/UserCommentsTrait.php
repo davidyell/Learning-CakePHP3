@@ -10,11 +10,11 @@ namespace App\Model\Traits;
 use Cake\ORM\Query;
 
 trait UserCommentsTrait {
-	
+
 /**
  * Find users and their comments ordered by created
  * 
- * @param \Cake\ORM\Query $query
+ * @param \Cake\ORM\Query $query The query object for the find
  * @return Query
  */
 	public function findUserCommentsByCreated(Query $query) {
@@ -29,5 +29,4 @@ trait UserCommentsTrait {
 					->order(['Comments.created' => 'ASC']);
 			}]);
 	}
-	
 }

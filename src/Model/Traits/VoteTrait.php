@@ -8,7 +8,7 @@ namespace App\Model\Traits;
  */
 
 trait VoteTrait {
-	
+
 /**
  * Get the total number of votes
  * 
@@ -17,5 +17,4 @@ trait VoteTrait {
 	public function getVotes() {
 		return $this->upvotes - $this->downvotes;
 	}
-	
 }

@@ -8,7 +8,7 @@
 namespace App\Controller;
 
 class AnswersController extends AppController {
-	
+
 	public $components = [
 		'Vote'
 	];
@@ -16,7 +16,6 @@ class AnswersController extends AppController {
 /**
  * Add an answer to a question
  *
- * @param int $id Question id to which the answer is added
  * @return void
  */
 	public function add() {
@@ -37,8 +36,8 @@ class AnswersController extends AppController {
 /**
  * Wrapper method for the Vote component
  * 
- * @param string $dir
- * @param int $id
+ * @param string $dir Which way the vote is up or down
+ * @param int $id The id of the answer
  * @return void
  */
 	public function vote($dir, $id) {

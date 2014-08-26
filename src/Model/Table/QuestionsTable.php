@@ -13,7 +13,7 @@ use Cake\ORM\Table;
 class QuestionsTable extends Table {
 
 	use UserCommentsTrait;
-	
+
 /**
  * Setup the table and relationships
  *

@@ -11,7 +11,7 @@ use App\Model\Traits\UserCommentsTrait;
 use Cake\ORM\Table;
 
 class AnswersTable extends Table {
-	
+
 	use UserCommentsTrait;
 
 /**

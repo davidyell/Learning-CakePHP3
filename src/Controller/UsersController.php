@@ -52,18 +52,19 @@ class UsersController extends AppController {
 	public function logout() {
 		return $this->redirect($this->Auth->logout());
 	}
-	
+
 /**
  * View a user record
  * 
  * @param int $id The id of the user
+ * @return void
  */
 	public function view($id) {
 		$user = $this->Users->find()
 			->contain(['Questions', 'Answers'])
 			->where(['Users.id' => $id])
 			->first();
-		
+
 		$this->set('user', $user);
 	}
 }
