@@ -6,9 +6,10 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.19",
-        "cakephp/cakephp": "3.0.0-beta1",
+        "cakephp/cakephp": "3.0.*-dev",
         "mobiledetect/mobiledetectlib": "2.*",
-        "cakephp/debug_kit": "3.0.*-dev"
+        "cakephp/debug_kit": "3.0.*-dev",
+        "cakephp/plugin-installer": "dev-master"
     },
     "require-dev": {
         "d11wtq/boris": "1.0.*",
