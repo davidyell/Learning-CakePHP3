@@ -1,5 +1,5 @@
 # Cake Exchange!
-A project built using the Cake 3 alpha-2.  
+A project built using CakePHP 3.  
 This is a quick site which emulates Stack Exchange in order to learn the new version of the framework.
 
 ## Setup
