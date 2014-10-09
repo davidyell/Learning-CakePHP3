@@ -23,7 +23,7 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Routing\Router;
 
-Router::parseExtensions('json');
+Router::extensions('json');
 
 Router::scope('/', function($routes) {
 /**
